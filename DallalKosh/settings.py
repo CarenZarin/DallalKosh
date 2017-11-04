@@ -37,8 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'django.contrib.sites',
+    'DallalKosh.accounts',
+    'DallalKosh.app',
+    'compat',
+    'guardian',
+    'easy_thumbnails',
+    'userena',
 
+]
+USERENA_ACTIVATION_REQUIRED = False
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,6 +58,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'DallalKosh.urls'
+
+ANONYMOUS_USER_ID = -1
+SITE_ID = 1
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'
+USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 TEMPLATES = [
     {
