@@ -1,0 +1,9 @@
+<ul>
+{% for g in user_requested_goods_list %}
+<li>
+{{g.requestedgood_title}}
+{{g.requestedgood_user}}
+{{g.requestedgood_date}}
+    </li>
+{% endfor %}
+    </ul>
