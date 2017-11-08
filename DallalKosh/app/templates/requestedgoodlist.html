@@ -7,8 +7,11 @@
 
     <button ><a  type="button" href="/request/?id={{rg.pk}}">request</a></button>
 
+{% empty %}
+    {{message}}
 
 {% endfor %}
 
     </ul>
+
 

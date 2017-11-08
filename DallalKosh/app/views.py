@@ -5,7 +5,7 @@ from django.shortcuts import render
 from .forms import *
 from django.contrib.auth.decorators import login_required
 
-
+from DallalKosh.accounts.models import MyProfile
 
 def root(request):
     return render(request, 'root.html')
@@ -29,11 +29,19 @@ def requestedgood(request):
 
 @login_required()
 def requestedgoodlist(request):
-    requested_good_list = RequestedGood.objects.all()
 
-    print(requested_good_list)
 
-    return render(request, 'requestedgoodlist.html', {'requested_good_list': requested_good_list})
+    user = request.user
+    requested_good_list=[]
+
+    profile = MyProfile.objects.get(user=user)
+    if profile.myprofile_is_seller :
+        requested_good_list = RequestedGood.objects.all()
+        return render(request, 'requestedgoodlist.html', {'requested_good_list': requested_good_list})
+
+    else:
+        return render(request, 'requestedgoodlist.html', {'message': 'you are not allowd '})
+
 
 @login_required()
 def request(request):
