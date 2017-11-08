@@ -44,7 +44,7 @@ def requestedgoodlist(request):
 
 
 @login_required()
-def request(request):
+def company_request(request):
 
     print(request.GET.get('id'))
     user=request.user
@@ -89,3 +89,17 @@ def show_user_requested_goods(request):
     user_requested_goods_list =RequestedGood.objects.filter(requestedgood_user=user)
 
     return render(request, 'user_requested_goods_list.html', {'user_requested_goods_list': user_requested_goods_list})
+
+
+@login_required()
+def show_company_goods(request):
+
+    user = request.user
+    profile = MyProfile.objects.get(user=user)
+    company_goods_list =[]
+    if profile.myprofile_is_seller:
+        company_goods_list =Good.objects.filter(good_owner=user)
+
+        return render(request, 'show_company_goods.html', {'company_goods_list': company_goods_list})
+    else :
+        return render(request, 'show_company_goods.html', {'message': 'you are not allowed '})

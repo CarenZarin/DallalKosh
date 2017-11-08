@@ -23,9 +23,10 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^requestgood/$',views.requestedgood ),
     url(r'^requestgoodlist/$', views.requestedgoodlist),
-    url(r'^request/$', views.request),
+    url(r'^request/$', views.company_request),
     url(r'^mygoods/$', views.show_user_goods),
     url(r'^myrequests/$', views.show_user_requested_goods),
+    url(r'^mycompanygoods/$', views.show_company_goods),
 
     url(r'^accounts/', include('userena.urls')),
     url(r'^$', views.root),
