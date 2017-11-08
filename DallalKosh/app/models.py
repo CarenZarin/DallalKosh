@@ -25,7 +25,7 @@ class Good(models.Model):
     good_title = models.CharField(max_length=200, null=True)
     good_image = models.ImageField(blank=True, upload_to='goodimages/', null=True)
     good_number = models.PositiveSmallIntegerField(blank=False, null=True)
-    good_data = models.DateTimeField(null=True  ,auto_now_add=True)
+    good_date = models.DateTimeField(auto_now_add=True ,null=True)
     def __str__(self):
         return "%s %s " % ( self.good_owner, self.good_title)
 
