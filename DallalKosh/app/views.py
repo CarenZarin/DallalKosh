@@ -47,21 +47,28 @@ def requestedgoodlist(request):
 def request(request):
 
     print(request.GET.get('id'))
+    user=request.user
+    profile = MyProfile.objects.get(user=user)
+    if profile.myprofile_is_seller :
 
-    if request.method == 'POST':
-        form = RequestForm(request.POST, request.FILES)
+        if request.method == 'POST':
+            form = RequestForm(request.POST, request.FILES)
 
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.good_owner = request.user
-            obj.good_requestedgood = RequestedGood.objects.get(pk=int(request.GET.get('id')))
-            print(obj.good_requestedgood)
-            form.save()
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.good_owner = request.user
+                obj.good_requestedgood = RequestedGood.objects.get(pk=int(request.GET.get('id')))
+                print(obj.good_requestedgood)
+                form.save()
+
+        else:
+            form = RequestForm()
+
+        return render(request, 'request.html', {'form': form})
 
     else:
-        form = RequestForm()
+        return render(request, 'request.html', {'message': 'you are not allowed '})
 
-    return render(request, 'request.html', {'form': form})
 
 @login_required()
 def show_user_goods(request):
