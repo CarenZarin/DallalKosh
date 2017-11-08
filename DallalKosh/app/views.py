@@ -21,6 +21,8 @@ def requestedgood(request):
             obj.requestedgood_user = request.user
             form.save()
 
+            
+
 
     else:
         form = RequestedGoodForm()
