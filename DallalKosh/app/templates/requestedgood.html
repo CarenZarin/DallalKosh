@@ -1,0 +1,14 @@
+<!--{% for field in form %}-->
+<!--{{field.label_tag}}-->
+<!--{{field}}-->
+<!--{% endfor %}-->
+{% load widget_tweaks %}
+
+<form method="post" enctype="multipart/form-data">
+    {%csrf_token %}
+{{form.as_p}}
+
+<button type="submit" >submit</button>
+
+
+    </form>

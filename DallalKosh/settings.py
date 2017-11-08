@@ -44,8 +44,16 @@ INSTALLED_APPS = [
     'guardian',
     'easy_thumbnails',
     'userena',
+    'widget_tweaks',
 
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+#
+
+
+
 USERENA_ACTIVATION_REQUIRED = False
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

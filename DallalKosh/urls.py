@@ -17,8 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from .app import views
 
+from django.conf.urls.static import static
+from . import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^requestgood/$',views.requestedgood ),
+    url(r'^requestgoodlist/$', views.requestedgoodlist),
+    url(r'^request/$', views.request),
     url(r'^accounts/', include('userena.urls')),
     url(r'^$', views.root),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
