@@ -1,5 +1,8 @@
 <ul>
 {% for g in user_requested_goods_list %}
+
+    <form method="POST" >
+        {%csrf_token%}
 <li>
 {{g.requestedgood_title}}
 {{g.requestedgood_user}}
@@ -8,5 +11,12 @@
 {{g.requestedgood_number}}
 <img src="/media/{{g.requestedgood_image}}/">
     </li>
+
+
+
+        <input  name="final_choose" type="checkbox"> <span>choose</span>
+        <button type="submit"> submit</button>
+        </form>
 {% endfor %}
     </ul>
+

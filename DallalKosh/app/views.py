@@ -21,7 +21,7 @@ def requestedgood(request):
             obj.requestedgood_user = request.user
             form.save()
 
-            
+
 
 
     else:
@@ -89,6 +89,12 @@ def show_user_requested_goods(request):
     user =request.user
 
     user_requested_goods_list =RequestedGood.objects.filter(requestedgood_user=user)
+
+    #
+    # if request.method=='POST':
+    #     final_choose= request.POST.get('final_choose')
+    #     if final_choose == 'on':if
+    #
 
     return render(request, 'user_requested_goods_list.html', {'user_requested_goods_list': user_requested_goods_list})
 
