@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^requestgood/$',views.requestedgood ),
     url(r'^requestgoodlist/$', views.requestedgoodlist),
     url(r'^request/$', views.request),
+    url(r'^mygoods/$', views.show_user_goods),
+
     url(r'^accounts/', include('userena.urls')),
     url(r'^$', views.root),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

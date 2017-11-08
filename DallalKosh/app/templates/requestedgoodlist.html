@@ -1,13 +1,14 @@
 
 <ul>
 
-{% for field in requested_good_list %}
+{% for rg in requested_good_list %}
 
-<li>{{field.requestedgood_title}}</li>
+<li>{{rg.requestedgood_title}}</li>
 
-    <button ><a type="button" href="/request/">request</a></button>
+    <button ><a  type="button" href="/request/?id={{rg.pk}}">request</a></button>
 
 
 {% endfor %}
 
     </ul>
+
