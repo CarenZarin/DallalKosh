@@ -3,12 +3,14 @@ from django.shortcuts import render
 # Create your views here.
 
 from .forms import *
+from django.contrib.auth.decorators import login_required
+
 
 
 def root(request):
     return render(request, 'root.html')
 
-
+@login_required()
 def requestedgood(request):
     if request.method == 'POST':
         form = RequestedGoodForm(request.POST, request.FILES)
@@ -25,7 +27,7 @@ def requestedgood(request):
 
     return render(request, 'requestedgood.html', {'form': form})
 
-
+@login_required()
 def requestedgoodlist(request):
     requested_good_list = RequestedGood.objects.all()
 
@@ -33,7 +35,7 @@ def requestedgoodlist(request):
 
     return render(request, 'requestedgoodlist.html', {'requested_good_list': requested_good_list})
 
-
+@login_required()
 def request(request):
 
     print(request.GET.get('id'))
@@ -53,7 +55,7 @@ def request(request):
 
     return render(request, 'request.html', {'form': form})
 
-
+@login_required()
 def show_user_goods(request):
 
     user =request.user
@@ -63,7 +65,7 @@ def show_user_goods(request):
 
     return render(request, 'show_user_goods.html', {'user_goods_list': user_goods_list})
 
-
+@login_required()
 def show_user_requested_goods(request):
 
 
