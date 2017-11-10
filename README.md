@@ -36,6 +36,13 @@ cd DallalKosh
 pip install -r requirements.txt
 ```
 
++ Change the following line in `lib/python3.6/site-packages/guardian/compat.py`
+
+```python
+# Change line 13 to the following line
+from django.conf.urls import *
+```
+
 + Run the migration task
 
 ```bash
