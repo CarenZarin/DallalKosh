@@ -1,0 +1,51 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signin" %}{% endblock %}
+{% block content_title %}
+<legend>ورود</legend>
+{% endblock %}
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <fieldset>
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    {{ field.errors }}
+    {% comment %} Displaying checkboxes differently {% endcomment %}
+    {% if field.name == 'remember_me' %}
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" name="remember_me" id="id_remember_me" style="float: right;">
+      <label class="form-check-label" style="padding-right: 3em;">
+        مرا به خاطر نگه دار
+      </label>
+    </div>
+    {% else %}
+    <div class="form-group">
+      <!-- <pre>{{field.name}}</pre> -->
+      {% if field.name == 'identification' %}
+      <label>نام کاربری یا آدرس ایمیل</label>
+      <input name="indentification" type="text" class="form-control" id="username" placeholder="نام کاربری یا آدرس ایمیل">
+      {% endif %}
+      {% if field.name == 'password' %}
+      <label>کلمه‌ی عبور</label>
+      <input name="password" type="password" class="form-control" id="password1" placeholder="کلمه‌ی عبور">
+      {% endif %}
+      <!-- <pre>{{ field.name }}</pre> -->
+    </div>
+    {% endif %}
+    {% endfor %}
+  </fieldset>
+  <div class="row">
+    <div class="col">
+      <input class="btn btn-primary btn-block" type="submit" value="ورود" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">آیا کلمه‌ی عبور خود را فراموش کرده اید؟</a></p>
+    </div>
+  </div>
+  {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+</form>
+{% endblock %}

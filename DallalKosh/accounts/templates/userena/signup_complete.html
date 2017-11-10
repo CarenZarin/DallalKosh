@@ -1,0 +1,17 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup almost done!" %}{% endblock %}
+
+{% block content_title %}<h2>ثبت نام</h2>{% endblock %}
+
+{% block content %}
+<p>با تشکر از ثبت نام شما</p>
+
+{% if userena_activation_required %}
+<p>{% blocktrans %}You have been sent an e-mail with an activation link to the supplied email.{% endblocktrans %}</p>
+<p>{% blocktrans %}We will store your signup information for {{ userena_activation_days }} days on our server. {% endblocktrans %}</p>
+{% else  %}
+<p>{% blocktrans %}اکنون می‌توانید با نام کاربری و کلمه‌ی عبور خود وارد سایت شوید{% endblocktrans %}</p>
+{% endif %}
+{% endblock %}

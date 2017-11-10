@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^myrequests/$', views.show_user_requested_goods),
     url(r'^mycompanygoods/$', views.show_company_goods),
 
-    url(r'^accounts/', include('userena.urls')),
+    url(r'^accounts/', include('DallalKosh.accounts.urls')),
     url(r'^$', views.root),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
