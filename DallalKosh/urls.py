@@ -21,9 +21,9 @@ from django.conf.urls.static import static
 from . import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^requestgood/$',views.requestedgood ),
-    url(r'^requestgoodlist/$', views.requestedgoodlist),
-    url(r'^request/$', views.company_request),
+    url(r'^customer/request/$',views.requestedgood ),
+    url(r'^provider/requests/$', views.requestedgoodlist),
+    url(r'^provider/offer/$', views.company_request),
     url(r'^mygoods/$', views.show_user_goods),
     url(r'^myrequests/$', views.show_user_requested_goods),
     url(r'^mycompanygoods/$', views.show_company_goods),
