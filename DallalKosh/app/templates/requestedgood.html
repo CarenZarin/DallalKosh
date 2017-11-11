@@ -4,11 +4,77 @@
 <!--{% endfor %}-->
 {% load widget_tweaks %}
 
-<form method="post" enctype="multipart/form-data">
+<!-- <form method="post" enctype="multipart/form-data">
     {%csrf_token %}
 {{form.as_p}}
 
 <button type="submit" >submit</button>
 
 
-    </form>
+    </form> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body>
+
+<div style="height:150px">
+</div>
+<div dir="rtl" class="col col-lg-10">
+<form method="post" enctype="multipart/form-data">
+	    {%csrf_token %}
+	{% for field in form %}
+ <div class="form-group">
+	
+{% if field.name == 'requestedgood_title' %}  
+<label >عنوان</label>
+{{ field|add_class:"form-control" }}
+ <!-- <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="عنوان">  -->
+{% endif %}
+</div>
+ <div class="form-group">
+ {% if field.name == 'requestedgood_number' %} 
+  <label >شماره</label> 
+  {{ field|add_class:"form-control" }}
+  <!-- <input  class="form-control" placeholder="شماره"> </div> -->
+{% endif %}
+</div>
+  <div class="form-group">
+  {% if field.name == "requestedgood_description" %} 
+  <label >توضیحات</label> 
+  {{ field|add_class:"form-control"}}
+  <!-- <input  class="form-control" placeholder="توضیحات"> </div> -->
+  {% endif %}</div> 
+
+{% if field.name == "requestedgood_image" %}
+{{ field|add_class:"form-control-file" }}
+  <!-- <div class="form-group"> <label></label> <input type="file" class="form-control-file" ></div> -->
+  {% endif %}
+  {% endfor%}
+   <button type="submit" class="btn btn-primary">تایید</button>
+</form>
+</div>
+
+
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
