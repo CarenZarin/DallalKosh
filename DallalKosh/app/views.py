@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 from DallalKosh.accounts.models import MyProfile
 
@@ -12,6 +14,7 @@ def root(request):
 
 @login_required()
 def requestedgood(request):
+    message= ''
     if request.method == 'POST':
         form = RequestedGoodForm(request.POST, request.FILES)
 
@@ -20,6 +23,8 @@ def requestedgood(request):
             obj = form.save(commit=False)
             obj.requestedgood_user = request.user
             form.save()
+            message = 'your request is submited '
+            messages.success(request, 'your request is submited')
 
 
 
@@ -27,7 +32,7 @@ def requestedgood(request):
     else:
         form = RequestedGoodForm()
 
-    return render(request, 'requestedgood.html', {'form': form})
+    return render(request, 'requestedgood.html', {'form': form , 'message':message})
 
 @login_required()
 def requestedgoodlist(request):
