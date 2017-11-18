@@ -23,8 +23,7 @@ def requestedgood(request):
             obj = form.save(commit=False)
             obj.requestedgood_user = request.user
             form.save()
-            message = 'your request is submited '
-            messages.success(request, 'your request is submited')
+            messages.success(request, 'your request is submited ')
 
 
 
