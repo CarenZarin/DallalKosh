@@ -5,6 +5,7 @@ from django.shortcuts import render
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 
 from DallalKosh.accounts.models import MyProfile
@@ -28,7 +29,7 @@ def requestedgood(request):
             obj.requestedgood_user = request.user
             form.save()
             messages.success(request, 'your request is submited ')
-
+            return HttpResponseRedirect('/entertobazar')
 
 
 
