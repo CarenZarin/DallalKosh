@@ -9,14 +9,14 @@
 
 <form action="" enctype="multipart/form-data" method="post">
   <ul id="box-nav">
-    <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'View profile' %}</span></a></li>
-    <li class="selected"><a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit profile" %}</a></li>
-    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a></li>
-    <li class="last"><a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a></li>
+    <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'مشاهده صفحه کاربری' %}</span></a></li>
+    <li class="selected"><a href="{% url 'userena_profile_edit' user.username %}">{% trans "ویرایش جزییات" %}</a></li>
+    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "تغییر رمز عبور" %}</a></li>
+    <li class="last"><a href="{% url 'userena_email_change' user.username %}">{% trans "تغییر آدرس بست الکترونیکی" %}</a></li>
   </ul>
   {% csrf_token %}
   <fieldset>
-    <legend>{% trans "Edit Profile" %}</legend>
+    <legend>{% trans "ویرایش جزییات" %}</legend>
     {{ form.as_p }}
   </fieldset>
   <input type="submit" value="{% trans "Save changes" %}" />

@@ -12,6 +12,10 @@ from DallalKosh.accounts.models import MyProfile
 def root(request):
     return render(request, 'root.html')
 
+
+def entertobazar(request):
+    return render(request, 'Enter_to_Bazar.html')
+
 @login_required()
 def requestedgood(request):
     message= ''
