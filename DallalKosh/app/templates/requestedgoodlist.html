@@ -26,41 +26,56 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	  <link rel="stylesheet" href="https://cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   </head>
   <body>
 
   <br><br>
 
+
+
+
+
+
   <div class="container">	
   <div class="row">
-  <div class="col-4">
+  
 
 
 {% for rg in requested_good_list %}
 
-<br><br>
+<div class="col-3"></div>
+<div class="col-6">
+
+<br><br> 
   <ul class="list-group">
 
 		  <li class="list-group-item active text-center" >درخواست</li>
 		  <li class="list-group-item text-right " >عنوان : {{rg.requestedgood_title}} </li>
 		  <li class="list-group-item text-right">تعداد : {{rg.requestedgood_number}} </li>
-		  <li class="list-group-item text-right">عکس :{{rg.requestedgood_image}}</li>
+		  <!-- <li class="list-group-item text-right">عکس :{{rg.requestedgood_image}}</li> -->
+      <li class="list-group-item text-right">عکس :{{rg.requestedgood_image}}</li>
 		  <li class="list-group-item text-right">توضیحات : {{rg.requestedgood_description}} </li>
 		  <!-- <button type="button" class="btn btn-success">تایید</button> -->
-		      <button  class="btn btn-success"><a  href="/provider/offer/?id={{rg.pk}}">تایید</a></button>
+		      <button  class="btn btn-Primary" style="background-color:#0080ff"><a  href="/provider/offer/?id={{rg.pk}}" style="color:white">تایید<img src="http://s9.picofile.com/file/8312546184/tick_blue.png"></a></button>
 
 
   </ul>
+</div>
+<div class="col-3">
+</div>
+
 
 {% empty %}
     {{message}}
+
+    </div>
 
 {% endfor %}
 
 
 
-  </div>
-  </div>
+  
   </div>
 
 
