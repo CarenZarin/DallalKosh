@@ -140,6 +140,14 @@ def factor(request):
 
     id = request.GET.get('id')
 
+    good = Good.objects.get(pk=id)
+    good.good_is_final =True
+    good.good_requestedgood.requestedgood_final = True
+    good.good_requestedgood.save()
+    good.save()
+    print('done')
+
+
 
 
 

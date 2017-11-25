@@ -11,6 +11,7 @@ class RequestedGood(models.Model):
     requestedgood_image = models.ImageField(blank=True, upload_to='reqgoodimages/', null=True)
     requestedgood_number = models.PositiveSmallIntegerField(blank=False, null=True)
     requestgood_data = models.DateTimeField(null=True  ,auto_now_add=True)
+    requestedgood_final = models.BooleanField(default=False)
 
 
     def __str__(self):
@@ -27,6 +28,8 @@ class Good(models.Model):
     good_number = models.PositiveSmallIntegerField(blank=False, null=True)
     good_date = models.DateTimeField(auto_now_add=True ,null=True)
     good_is_final=models.BooleanField(default=False)
+
+
     def __str__(self):
         return "%s %s " % ( self.good_owner, self.good_title)
 
