@@ -21,9 +21,11 @@ from django.conf.urls.static import static
 from . import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
     url(r'^customer/request/$',views.requestedgood ),
     url(r'^provider/requests/$', views.requestedgoodlist),
-        url(r'^entertobazar$',views.entertobazar ),
+
+    url(r'^entertobazaar$',views.entertobazar ),
 
     url(r'^provider/offer/$', views.company_request),
     url(r'^mygoods/$', views.show_user_goods),
