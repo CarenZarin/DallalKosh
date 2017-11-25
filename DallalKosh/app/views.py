@@ -13,7 +13,7 @@ from DallalKosh.accounts.models import MyProfile
 def root(request):
     return render(request, 'root.html')
 
-
+@login_required()
 def entertobazar(request):
     return render(request, 'Enter_to_Bazar.html')
 
@@ -29,7 +29,7 @@ def requestedgood(request):
             obj.requestedgood_user = request.user
             form.save()
             messages.success(request, 'your request is submited ')
-            return HttpResponseRedirect('/entertobazar')
+            return HttpResponseRedirect('/entertobazaar')
 
 
 
@@ -39,7 +39,7 @@ def requestedgood(request):
     return render(request, 'requestedgood.html', {'form': form , 'message':message})
 
 @login_required()
-def requestedgoodlist(request):
+def customers_requests(request):
 
 
     user = request.user
@@ -55,7 +55,7 @@ def requestedgoodlist(request):
 
 
 @login_required()
-def company_request(request):
+def provider_offer(request):
 
     print(request.GET.get('id'))
     user=request.user
@@ -71,6 +71,7 @@ def company_request(request):
                 obj.good_requestedgood = RequestedGood.objects.get(pk=int(request.GET.get('id')))
                 print(obj.good_requestedgood)
                 form.save()
+                return HttpResponseRedirect('/entertobazaar')
 
         else:
             form = RequestForm()
@@ -82,7 +83,7 @@ def company_request(request):
 
 
 @login_required()
-def show_user_goods(request):
+def provider_goods(request):
 
     user =request.user
 
@@ -92,7 +93,7 @@ def show_user_goods(request):
     return render(request, 'show_user_goods.html', {'user_goods_list': user_goods_list})
 
 @login_required()
-def show_user_requested_goods(request):
+def customer_requestlist(request):
 
 
     user =request.user
@@ -120,3 +121,10 @@ def show_company_goods(request):
         return render(request, 'show_company_goods.html', {'company_goods_list': company_goods_list})
     else :
         return render(request, 'show_company_goods.html', {'message': 'you are not allowed '})
+
+@login_required()
+def customer_final_choose(request):
+    user = request.user
+    
+
+    return render(request , '')

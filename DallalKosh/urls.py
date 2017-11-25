@@ -23,13 +23,14 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^customer/request/$',views.requestedgood ),
-    url(r'^provider/requests/$', views.requestedgoodlist),
+    url(r'^provider/customersrequests/$', views.customers_requests),
 
-    url(r'^entertobazaar$',views.entertobazar ),
+    url(r'^entertobazaar$',views.entertobazar),
 
-    url(r'^provider/offer/$', views.company_request),
-    url(r'^mygoods/$', views.show_user_goods),
-    url(r'^myrequests/$', views.show_user_requested_goods),
+    url(r'^provider/offer/$', views.provider_offer),
+    url(r'^provider/goods/$', views.provider_goods),
+    url(r'^customer/requestlist/$', views.customer_requestlist),
+    url(r'^customer/final_choose/$', views.),
     url(r'^mycompanygoods/$', views.show_company_goods),
 
     url(r'^accounts/', include('DallalKosh.accounts.urls')),
