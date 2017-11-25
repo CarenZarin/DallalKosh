@@ -2,25 +2,10 @@
 {% load widget_tweaks %}
 
 {% block content_title %}درخواست محصول{% endblock %}
+{% block title %}درخواست محصول{% endblock %}
 
 {% block content %}
     <div class="container" style="text-align: right;">
-      <div class="row">
-        <div class="col-md-12">
-          {% if messages %}
-          <ul class="messages">
-              {% for msg in messages %}
-              <li>
-                  <div class="alert alert-{{msg.level_tag}}" role="alert">
-                  {{msg.message}}
-                  </div>
-              </li>
-              {% endfor %}
-          </ul>
-          {% endif %}
-        </div>
-      </div>
-
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <form method="post" enctype="multipart/form-data">
