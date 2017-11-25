@@ -125,6 +125,22 @@ def show_company_goods(request):
 @login_required()
 def customer_final_choose(request):
     user = request.user
-    
 
-    return render(request , '')
+    all_goods = Good.objects.all()
+    final_choose=[]
+    for obj in all_goods:
+        if obj.good_owner == user:
+            final_choose.append(obj)
+    return render(request , 'customer_final_choose.html', {'final_choose':final_choose})
+
+
+@login_required()
+def factor(request):
+    user = request.user
+
+    id = request.GET.get('id')
+
+
+
+
+    return render(request , 'factor.html', )

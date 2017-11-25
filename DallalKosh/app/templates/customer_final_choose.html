@@ -1,0 +1,7 @@
+{% for finals in final_choose %}
+{{finals.good_owner}}
+{{finals.good_title}}
+
+<button><a href="/factor/?id={{finals.pk}}">تایید نهایی </a></button>
+
+{% endfor %}

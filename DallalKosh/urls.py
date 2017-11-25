@@ -30,7 +30,8 @@ urlpatterns = [
     url(r'^provider/offer/$', views.provider_offer),
     url(r'^provider/goods/$', views.provider_goods),
     url(r'^customer/requestlist/$', views.customer_requestlist),
-    url(r'^customer/final_choose/$', views.),
+    url(r'^customer/final_choose/$', views.customer_final_choose),
+    url(r'^factor/$', views.factor),
     url(r'^mycompanygoods/$', views.show_company_goods),
 
     url(r'^accounts/', include('DallalKosh.accounts.urls')),
