@@ -20,34 +20,34 @@
       <form method="post" enctype="multipart/form-data">
           {%csrf_token %}
           {% for field in form %}
-          
+
           {% if field.name == 'good_price' %}
           <div class="form-group">
-            <label ><i class="fa fa-id-badge" aria-hidden="true"></i> قیمت پیشنهادی</label>
+            <label ><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> قیمت پیشنهادی</label>
             {{ field|add_class:"form-control" }}
           </div>
           {% endif %}
           {% if field.name == 'good_description' %}
           <div class="form-group">
-            <label ><i class="fa fa-id-pencil" aria-hidden="true"></i> توضیحات </label>
+            <label ><i class="fa fa-pencil" aria-hidden="true"></i> توضیحات </label>
             {{ field|add_class:"form-control" }}
           </div>
           {% endif %}
           {% if field.name == 'good_title' %}
           <div class="form-group">
-            <label ><i class="fa fa-id-pencil" aria-hidden="true"></i> عنوان محصول </label>
+            <label ><i class="fa fa-id-badge" aria-hidden="true"></i> عنوان محصول </label>
             {{ field|add_class:"form-control" }}
           </div>
           {% endif %}
           {% if field.name == 'good_image' %}
           <div class="form-group">
-            <label ><i class="fa fa-id-camera" aria-hidden="true"></i> تصویر محصول </label>
+            <label ><i class="fa fa-camera" aria-hidden="true"></i> تصویر محصول </label>
             {{ field|add_class:"form-control-file" }}
           </div>
           {% endif %}
           {% if field.name == 'good_number' %}
           <div class="form-group">
-            <label ><i class="fa fa-id-pencil" aria-hidden="true"></i> تعداد محصول </label>
+            <label ><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> تعداد محصول </label>
             {{ field|add_class:"form-control" }}
           </div>
           {% endif %}
