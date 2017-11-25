@@ -78,7 +78,7 @@ def company_request(request):
         return render(request, 'request.html', {'form': form})
 
     else:
-        return render(request, 'request.html', {'message': 'you are not allowed '})
+        return render(request, 'request.html', {'message': 'شما اجازه‌ی دسترسی به این صفحه را ندارید '})
 
 
 @login_required()
