@@ -100,13 +100,18 @@ def customer_requestlist(request):
 
     user_requested_goods_list =RequestedGood.objects.filter(requestedgood_user=user)
 
-    #
-    # if request.method=='POST':
-    #     final_choose= request.POST.get('final_choose')
-    #     if final_choose == 'on':if
-    #
+    good_list = Good.objects.all()
+    has_good=False
+    final_list=[]
+    for obj in good_list:
+        for req in user_requested_goods_list:
+            if obj.good_requestedgood==req :
+                final_list.append((req,'provider confirmed'))
 
-    return render(request, 'user_requested_goods_list.html', {'user_requested_goods_list': user_requested_goods_list})
+
+
+
+    return render(request, 'user_requested_goods_list.html', {'user_requested_goods_list': final_list})
 
 
 @login_required()
@@ -145,10 +150,6 @@ def factor(request):
     good.good_requestedgood.requestedgood_final = True
     good.good_requestedgood.save()
     good.save()
-    print('done')
 
 
-
-
-
-    return render(request , 'factor.html', )
+    return render(request , 'factor.html', {'good':good , 'requestgood':   good.good_requestedgood})
