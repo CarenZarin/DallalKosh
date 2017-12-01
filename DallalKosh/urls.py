@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^customer/request/$',views.requestedgood ),
     url(r'^provider/customersrequests/$', views.customers_requests),
 
-    url(r'^entertobazaar$',views.entertobazar),
+    url(r'^entertobazar$',views.entertobazar),
 
     url(r'^provider/offer/$', views.provider_offer),
     url(r'^provider/goods/$', views.provider_goods),
