@@ -20,9 +20,28 @@
 </head>
 <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
   <div id="body">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">دلال کش</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse flip pull-right" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            {% if not user.username %}
+            <a class="nav-link" href="/accounts/signin">ورود</a>
+            {% endif %}
+            {% if user.username %}
+            <a class="nav-link" href="/accounts/signout">خروج</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </nav>
     <div class="container">
-      <div class="row" style="padding-top: 3em; text-align: center;">
-        <div class="col">
+      <div class="row  justify-content-center" style="padding-top: 3em; text-align: center;">
+        <div class="col-8">
           <div class="card">
             <div class="card-header">
               <div class="content_title">
