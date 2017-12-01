@@ -22,7 +22,7 @@
     </div>
     {% else %}
     <div class="form-group">
-      
+
       <!-- <pre>{{field.name}}</pre> -->
       {% if field.name == 'identification' %}
       <label>نام کاربری یا آدرس ایمیل</label>
@@ -44,7 +44,9 @@
   </div>
   <div class="row">
     <div class="col">
-      <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">آیا کلمه‌ی عبور خود را فراموش کرده اید؟</a></p>
+      <hr>
+      <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="آیا کلمه‌ی عبور خود را فراموش کرده اید؟">آیا کلمه‌ی عبور خود را فراموش کرده اید؟</a></p>
+      <p class=""><a href="{% url 'userena_signup' %}" title="هنور ثبت  نام نکرده اید؟">هنور ثبت  نام نکرده اید؟</a></p>
     </div>
   </div>
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
