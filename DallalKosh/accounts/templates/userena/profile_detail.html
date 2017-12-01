@@ -1,25 +1,33 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
-{% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %} خوش آمدید!</h2>{% endblock %}
+{% block title %}{% blocktrans with profile.user.username as username %}پروفایل {{ username }}{% endblocktrans %}{% endblock %}
+{% block content_title %}<h2>{% if profile.user.get_full_name %}{{ profile.user.get_full_name }}،{% endif %} خوش آمدید!</h2>{% endblock %}
 
 {% block content %}
   <div class="white-box">
     {% block profile_navigation %}
       {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
       {% if user.username == profile.user.username %}
-        <ul id="box-nav">
+
+
           {% block profile_navigation_items %}
-            <li><a href="{% url 'userena_profile_detail' user.username %}">{% trans "مشاهده صفحه کاربری" %}</a>
-            </li>
-            <li><a href="{% url 'userena_profile_edit' user.username %}">{% trans "ویرایش جزییات " %}</a></li>
-            <li><a href="{% url 'userena_password_change' user.username %}">{% trans "تغییر رمز عبور" %}</a></li>
-            <li><a href="{% url 'userena_email_change' user.username %}">{% trans "تغییر آدرس بست الکترونیکی" %}
-            </a></li>
-            <li><a href='/entertobazar' >{% trans "ورود به بازار مجازی!" %}</a></li>
+          <div class="row">
+            <div class="col">
+              <!-- <a class="btn btn-success" href="{% url 'userena_profile_detail' user.username %}">{% trans "مشاهده صفحه کاربری" %}</a> -->
+              <a class="btn btn-primary" href="{% url 'userena_profile_edit' user.username %}">{% trans "ویرایش جزییات " %}</a>
+              <a class="btn btn-danger" href="{% url 'userena_password_change' user.username %}">{% trans "تغییر رمز عبور" %}</a>
+              <a class="btn btn-warning" href="{% url 'userena_email_change' user.username %}">{% trans "تغییر آدرس پست الکترونیکی" %}</a>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="btn btn-success" href='/entertobazar' >{% trans "ورود به بازار مجازی!" %}</a>
+              <hr>
+            </div>
+          </div>
           {% endblock %}
-        </ul>
       {% endif %}
     {% endblock %}
 

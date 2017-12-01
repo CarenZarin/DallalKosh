@@ -1,21 +1,34 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block content_title %}<h2>{% blocktrans with user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
+{% block title %}تغییر پست الکترونیکی{% endblock %}
+
+{% block content_title %}<h2>{% blocktrans with user.username as username %}تغییر آدرس پست الکترونیکی اکانت {{ username }}{% endblocktrans %}</h2>{% endblock %}
 
 {% block content %}
 <form action="" method="post">
-  <ul id="box-nav">
-    <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'View profile' %}</span></a></li>
-    <li><a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit profile" %}</a></li>
-    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a></li>
-    <li class="last selected"><a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a></li>
-  </ul>
+  {% block profile_navigation_items %}
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-success" href="{% url 'userena_profile_detail' user.username %}">{% trans "مشاهده صفحه کاربری" %}</a>
+      <a class="btn btn-primary" href="{% url 'userena_profile_edit' user.username %}">{% trans "ویرایش جزییات " %}</a>
+      <a class="btn btn-danger" href="{% url 'userena_password_change' user.username %}">{% trans "تغییر رمز عبور" %}</a>
+      <!-- <a class="btn btn-warning" href="{% url 'userena_email_change' user.username %}">{% trans "تغییر آدرس بست الکترونیکی" %}</a> -->
+      <hr>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col">
+      <a class="btn btn-success" href='/entertobazar' >{% trans "ورود به بازار مجازی!" %}</a>
+      <hr>
+    </div>
+  </div> -->
+  {% endblock %}
   {% csrf_token %}
   <fieldset>
-    <legend>{% trans "Change email address" %}</legend>
+    <legend>تغییر آدرس پست اکترونیکی</legend>
     {{ form.as_p }}
   </fieldset>
-  <input type="submit" value="{% trans "Change email" %}" />
+  <input class="btn btn-success" type="submit" value="تغییر آدرس پست الکترونیکی" />
 </form>
 {% endblock %}

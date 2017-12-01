@@ -1,24 +1,35 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Account setup" %}{% endblock %}
+{% block title %}تنظیمات اکانت{% endblock %}
 
-{% block content_title %}<h2>{% blocktrans with profile.user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
+{% block content_title %}<h2>{% blocktrans with profile.user.username as username %}ویرایش جزییات اکانت {{ username }}{% endblocktrans %}</h2>{% endblock %}
 
 {% block content %}
 
 <form action="" enctype="multipart/form-data" method="post">
-  <ul id="box-nav">
-    <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'مشاهده صفحه کاربری' %}</span></a></li>
-    <li class="selected"><a href="{% url 'userena_profile_edit' user.username %}">{% trans "ویرایش جزییات" %}</a></li>
-    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "تغییر رمز عبور" %}</a></li>
-    <li class="last"><a href="{% url 'userena_email_change' user.username %}">{% trans "تغییر آدرس بست الکترونیکی" %}</a></li>
-  </ul>
+  {% block profile_navigation_items %}
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-success" href="{% url 'userena_profile_detail' user.username %}">{% trans "مشاهده صفحه کاربری" %}</a>
+      <!-- <a class="btn btn-primary" href="{% url 'userena_profile_edit' user.username %}">{% trans "ویرایش جزییات " %}</a> -->
+      <a class="btn btn-danger" href="{% url 'userena_password_change' user.username %}">{% trans "تغییر رمز عبور" %}</a>
+      <a class="btn btn-warning" href="{% url 'userena_email_change' user.username %}">{% trans "تغییر آدرس پست الکترونیکی" %}</a>
+      <hr>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col">
+      <a class="btn btn-success" href='/entertobazar' >{% trans "ورود به بازار مجازی!" %}</a>
+      <hr>
+    </div>
+  </div> -->
+  {% endblock %}
   {% csrf_token %}
   <fieldset>
     <legend>{% trans "ویرایش جزییات" %}</legend>
     {{ form.as_p }}
   </fieldset>
-  <input type="submit" value="{% trans "Save changes" %}" />
+  <input class="btn btn-success" type="submit" value="ذخیره‌ی تغییرات" />
 </form>
 {% endblock %}
