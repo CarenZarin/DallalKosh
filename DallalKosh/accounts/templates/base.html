@@ -30,10 +30,10 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             {% if not user.username %}
-            <a class="nav-link" href="/accounts/signin">ورود</a>
+            <a class="nav-link text-success" href="/accounts/signin">ورود</a>
             {% endif %}
             {% if user.username %}
-            <a class="nav-link" href="/accounts/signout">خروج</a>
+            <a class="nav-link text-danger" href="/accounts/signout">خروج</a>
             {% endif %}
           </li>
         </ul>
