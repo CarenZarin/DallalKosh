@@ -29,7 +29,7 @@ def requestedgood(request):
             obj.requestedgood_user = request.user
             form.save()
             messages.success(request, 'your request is submited ')
-            return HttpResponseRedirect('/entertobazaar')
+            return HttpResponseRedirect('/entertobazar')
 
 
 
@@ -71,7 +71,7 @@ def provider_offer(request):
                 obj.good_requestedgood = RequestedGood.objects.get(pk=int(request.GET.get('id')))
                 print(obj.good_requestedgood)
                 form.save()
-                return HttpResponseRedirect('/entertobazaar')
+                return HttpResponseRedirect('/entertobazar')
 
         else:
             form = RequestForm()
