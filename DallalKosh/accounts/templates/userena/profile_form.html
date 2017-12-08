@@ -26,10 +26,27 @@
   </div> -->
   {% endblock %}
   {% csrf_token %}
+
   <fieldset>
+  <!-- {{ form.as_p }} -->
     <legend>{% trans "ویرایش جزییات" %}</legend>
-    {{ form.as_p }}
+    {% for field in form %}
+    <div class="form-group">
+      {% if field.name == 'first_name' %}
+      <label>نام</label>
+      <input name="first_name" type="text" class="form-control" id="id_first_name" value="{{ field.value }}">
+      {% elif field.name == 'last_name' %}
+      <label>نام خانوادگی</label>
+      <input name="last_name" type="text" class="form-control" id="id_last_name" value="{{ field.value }}">
+      {% else %}
+      <div style="display: none;">
+        {{field}}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
   </fieldset>
+
   <input class="btn btn-success" type="submit" value="ذخیره‌ی تغییرات" />
 </form>
 {% endblock %}
