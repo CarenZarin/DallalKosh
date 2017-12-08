@@ -73,6 +73,20 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $('.errorlist').each(function(index, element) {
+        var newHTML = '<div class="alert alert-danger" role="alert">';
+        $(element).children().each(function(i, err) {
+          if ($(err).html() == "This field is required.")
+            $(err).html("وارد کردن این فیلد ضروری است");
+          newHTML += "<div>" + $(err).html() + "</div>";
+        })
+        newHTML += '</div>';
+        $(element).replaceWith(newHTML);
+        // $(element).css("list-style-type", "none");
+
+      })
+    </script>
   </div>
 </body>
 </html>
