@@ -38,11 +38,11 @@
         <dl>
           {% block profile_definition_list %}
             {% if profile.user.get_full_name %}
-              <dt>{% trans "Name" %}</dt>
+              <dt>{% trans "نام" %}</dt>
               <dd>{{ profile.user.get_full_name }}</dd>
             {% endif %}
             {% if profile.user.email and not hide_email %}
-              <dt>{% trans "Email" %}</dt>
+              <dt>{% trans "آدرس پست الکترونیکی" %}</dt>
               <dd>{{ profile.user.email }}</dd>
             {% endif %}
             {% if profile.age %}
