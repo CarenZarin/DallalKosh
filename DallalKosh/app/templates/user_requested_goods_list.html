@@ -1,37 +1,51 @@
-<ul>
-{% for g in user_requested_goods_list %}
+<!-- aval -->
+{% extends 'partials/base.html' %}
+<!-- {% load widget_tweaks %} -->
 
-    <form method="POST" >
+{% block content_title %} تمام درخواست هاي من به فراهم كنندگان (مشتري){% endblock %}
+{% block title %} تمام درخواست هاي من به فراهم كنندگان ( مشتري){% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    {% for g in user_requested_goods_list %}
+    <div class="col-6">
+         <form method="POST">
         {%csrf_token%}
-        <!--{{g.requestedgood_final}}-->
-<li>
-{{g.0.requestedgood_title}}
-<!--{{g.requestedgood_user}}-->
-<!--{{g.requestedgood_date}}-->
-<!--{{g.requestedgood_price}}-->
-<!--{{g.requestedgood_number}}-->
-<!--<img src="/media/{{g.requestedgood_image}}/">-->
-    </li>
+      <ul class="list-group" style="padding-bottom: 1em;">
 
-
-{% if g.0.requestedgood_final  %}
-            is final
+          <li class="list-group-item list-group-item-action text-center" >درخواست شماره {{g.0.requestedgood_id}}</li>
+          <li class="list-group-item text-right " >عنوان : {{g.0.requestedgood_title}} </li>
+          <li class="list-group-item text-right">تعداد درخواست : {{g.0.requestedgood_number}} </li>
+          <!-- <li class="list-group-item text-right">عکس :{{rg.requestedgood_image}}</li> -->
+          <li class="list-group-item text-center"><img src="/media/{{g.0.requestedgood_image}}" alt="تصویر محصول" class="img-thumbnail"></li>
+          <li class="list-group-item text-right">تعداد : {{g.0.requestedgood_number}} </li>
+          <li class="list-group-item text-right">توضیحات : {{g.0.requestedgood_description}} </li>
+          {% if g.0.requestedgood_final  %}
+            <button type="button" class="btn btn-outline-success" style="background-color:#0080ff" style="color:white"><a href="/factor/?id={{g.0.requestedgood_pk}}">
+                 <i class="fa fa-check" aria-hidden="true"></i> محصول نهایی شده (مشاهده فاکتور)</a></button>
         {% else %}
-
-not final
-        {% endif %}
-{% if g.1 == 'provider confirmed' %}
+        not final
+                {% endif %}
+        {% if g.1 == 'provider confirmed' %}
         provider confirmed
 
         {%else %}
-
-
         provider not confirmed
 
         {% endif %}
            </form>
-{% endfor %}
-    </ul>
+      </ul>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+
 
 
 

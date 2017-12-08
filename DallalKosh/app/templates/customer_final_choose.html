@@ -1,7 +1,32 @@
-{% for finals in final_choose %}
-{{finals.good_owner}}
-{{finals.good_title}}
+{% extends 'partials/base.html' %}
+<!-- {% load widget_tweaks %} -->
 
-<button><a href="/factor/?id={{finals.pk}}">تایید نهایی </a></button>
+{% block content_title %}مشاهده تمام پيشنهادات فراهم كنندگان به من (مشتري){% endblock %}
+{% block title %}مشاهده تمام پيشنهادات فراهم كنندگان به من (مشتري){% endblock %}
 
-{% endfor %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    {% for finals in final_choose %}
+    <div class="col-6">
+      <ul class="list-group" style="padding-bottom: 1em;">
+
+          <li class="list-group-item list-group-item-success text-center" >درخواست شماره {{finals.good.id}}</li>
+          <li class="list-group-item text-right">عنوان : {{finals.good_title}} </li>
+          <li class="list-group-item text-center"><img src="/media/{{finals.good_image}}" alt="تصویر محصول" class="img-thumbnail"></li>
+          <li class="list-group-item text-right">تاریخ درخواست : {{finals.good_date}} </li>
+          <li class="list-group-item text-right">قیمت : {{finals.good_price}} </li>
+          <li class="list-group-item text-right">توضیحات : {{finals.good_description}} </li>
+          <li class="list-group-item text-right">تعداد : {{finals.good_number}} </li>
+          <button type="button" class="btn btn-outline-success"><a href="/factor/?id={{finals.pk}}">تایید نهایی </a></button>
+          <!-- <button type="button" class="btn btn-success">تایید</button> -->
+      </ul>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
