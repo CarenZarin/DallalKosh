@@ -103,13 +103,12 @@ def customer_requestlist(request):
     good_list = Good.objects.all()
     has_good=False
     final_list=[]
-    for obj in good_list:
-        for req in user_requested_goods_list:
+    for req in user_requested_goods_list:
+        good = -1
+        for obj in good_list:
             if obj.good_requestedgood==req :
-                final_list.append((req,'provider confirmed'))
-
-
-
+                good = obj
+        final_list.append((req, good))
 
     return render(request, 'user_requested_goods_list.html', {'user_requested_goods_list': final_list})
 

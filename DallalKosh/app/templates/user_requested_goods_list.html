@@ -26,12 +26,12 @@
           <li class="list-group-item text-right">توضیحات : {{g.0.requestedgood_description}} </li>
           <li class="list-group-item text-right">
           {% if g.0.requestedgood_final  %}
-            <a class="btn btn-outline-success"  href="/factor/?id={{g.0.pk}}">
+            <a class="btn btn-outline-success"  href="/factor/?id={{g.1.pk}}">
                  <i class="fa fa-check" aria-hidden="true"></i> محصول نهایی شده (مشاهده فاکتور)</a>
           {% else %}
             <p>هنوز تایید نهایی نشده است</p>
           {% endif %}
-          {% if g.1 == 'provider confirmed' %}
+          {% if g.1 != -1 %}
             <span class="badge badge-light"><i class="text-success fa fa-check-square-o"> توسط فراهم کننده تایید شده</i></span>
 
           {%else %}
