@@ -29,13 +29,14 @@
             <a class="btn btn-outline-success"  href="/factor/?id={{g.1.pk}}">
                  <i class="fa fa-check" aria-hidden="true"></i> محصول نهایی شده (مشاهده فاکتور)</a>
           {% else %}
-            <p>هنوز تایید نهایی نشده است</p>
+          <button class="btn btn-outline-danger" disabled="true" >
+               <i class="fa fa-ban" aria-hidden="true"></i> هنوز تایید نهایی نشده است</button>
           {% endif %}
           {% if g.1 != -1 %}
-            <span class="badge badge-light"><i class="text-success fa fa-check-square-o"> توسط فراهم کننده تایید شده</i></span>
+            <span class="badge badge-light"><i class="text-success fa fa-check-square-o"> دارای پیشنهاد ثبت شده</i></span>
 
           {%else %}
-            <span class="badge badge-light"><i class="text-danger fa fa-ban"> توسط فراهم کننده تایید نشده</i></span>
+            <span class="badge badge-light"><i class="text-danger fa fa-ban"> هیچ پیشنهادی ثبت نشده است</i></span>
 
           {% endif %}
           </li>
