@@ -10,11 +10,14 @@
   <div class="container">
   <div class="row">
   <a class="btn btn-outline-info btn-lg btn-block" style="text-decoration: none;" href="/customer/request">ثبت درخواست خرید محصول (مشتری)</a>
-  <a class="btn btn-outline-secondary btn-lg btn-block" style="text-decoration: none;" href="/provider/customersrequests">مشاهده درخواست های مشتریان توسط من (فراهم كننده)</a>
-  <a class="btn btn-outline-warning btn-lg btn-block" style="text-decoration: none;" href="/provider/goods">مشاهده تمام پیشنهادات من به مشتریان( فراهم كننده)</a>
-
   <a class="btn btn-outline-success btn-lg btn-block" style="text-decoration: none;" href="/customer/final_choose">مشاهده تمام پیشنهادات فراهم كنندگان به من (مشتری)</a>
   <a class="btn btn-outline-primary btn-lg btn-block" style="text-decoration: none;" href="/customer/requestlist/">مشاهده تمام درخواست های من به فراهم كنندگان (مشتری)</a>
+  {{request.user.MyProfile}}
+  {% if request.user.my_profile.myprofile_is_seller %}
+
+  <a class="btn btn-outline-secondary btn-lg btn-block" style="text-decoration: none;" href="/provider/customersrequests">مشاهده درخواست های مشتریان توسط من (فراهم كننده) <span class="badge badge-info pull-left">فراهم‌کننده</span></a>
+  <a class="btn btn-outline-warning btn-lg btn-block" style="text-decoration: none;" href="/provider/goods">مشاهده تمام پیشنهادات من به مشتریان( فراهم كننده) <span class="badge badge-info pull-left">فراهم‌کننده</span></a>
+  {% endif %}
   </ul>
   </div>
   </div>
