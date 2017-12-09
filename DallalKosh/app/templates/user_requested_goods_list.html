@@ -11,31 +11,34 @@
 <div class="container">
   <div class="row">
     {% for g in user_requested_goods_list %}
+    <!-- {{ g.0.pk }} -->
     <div class="col-6">
          <form method="POST">
         {%csrf_token%}
       <ul class="list-group" style="padding-bottom: 1em;">
 
-          <li class="list-group-item list-group-item-action text-center" >درخواست شماره {{g.0.requestedgood_id}}</li>
+          <li class="list-group-item list-group-item-action text-center" >درخواست شماره {{g.0.id}}</li>
           <li class="list-group-item text-right " >عنوان : {{g.0.requestedgood_title}} </li>
           <li class="list-group-item text-right">تعداد درخواست : {{g.0.requestedgood_number}} </li>
           <!-- <li class="list-group-item text-right">عکس :{{rg.requestedgood_image}}</li> -->
           <li class="list-group-item text-center"><img src="/media/{{g.0.requestedgood_image}}" alt="تصویر محصول" class="img-thumbnail"></li>
           <li class="list-group-item text-right">تعداد : {{g.0.requestedgood_number}} </li>
           <li class="list-group-item text-right">توضیحات : {{g.0.requestedgood_description}} </li>
+          <li class="list-group-item text-right">
           {% if g.0.requestedgood_final  %}
-            <button type="button" class="btn btn-outline-success" style="background-color:#0080ff" style="color:white"><a href="/factor/?id={{g.0.requestedgood_pk}}">
-                 <i class="fa fa-check" aria-hidden="true"></i> محصول نهایی شده (مشاهده فاکتور)</a></button>
-        {% else %}
-        not final
-                {% endif %}
-        {% if g.1 == 'provider confirmed' %}
-        provider confirmed
+            <a class="btn btn-outline-success"  href="/factor/?id={{g.0.pk}}">
+                 <i class="fa fa-check" aria-hidden="true"></i> محصول نهایی شده (مشاهده فاکتور)</a>
+          {% else %}
+            <p>هنوز تایید نهایی نشده است</p>
+          {% endif %}
+          {% if g.1 == 'provider confirmed' %}
+            <span class="badge badge-light"><i class="text-success fa fa-check-square-o"> توسط فراهم کننده تایید شده</i></span>
 
-        {%else %}
-        provider not confirmed
+          {%else %}
+            <span class="badge badge-light"><i class="text-danger fa fa-ban"> توسط فراهم کننده تایید نشده</i></span>
 
-        {% endif %}
+          {% endif %}
+          </li>
            </form>
       </ul>
     </div>
@@ -44,8 +47,3 @@
   </div>
 </div>
 {% endblock %}
-
-
-
-
-
