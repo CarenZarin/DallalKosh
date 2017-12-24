@@ -1,7 +1,7 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with profile.user.username as username %}پروفایل {{ username }}{% endblocktrans %}{% endblock %}
+{% block title %}{% blocktrans with profile.user.username as username %}حساب کاربری {{ username }}{% endblocktrans %}{% endblock %}
 {% block content_title %}<h2>{% if profile.user.get_full_name %}{{ profile.user.get_full_name }}،{% endif %} خوش آمدید!</h2>{% endblock %}
 
 {% block content %}

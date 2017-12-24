@@ -50,7 +50,13 @@
 
           {% if user.username %}
           <li class="nav-item">
-            <a class="nav-link text-info" href="/accounts/{{user.username}}">اکانت</a>
+            <a class="nav-link text-primary" href="/entertobazar">فیلم های آموزشی</a>
+          </li>
+          {% endif %}
+
+          {% if user.username %}
+          <li class="nav-item">
+            <a class="nav-link text-info" href="/accounts/{{user.username}}">حساب کاربری</a>
           </li>
           {% endif %}
 
