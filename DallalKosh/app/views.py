@@ -133,7 +133,7 @@ def customer_final_choose(request):
     all_goods = Good.objects.all()
     final_choose=[]
     for obj in all_goods:
-        if obj.good_owner == user:
+        if obj.good_requestedgood.requestedgood_user == user:
             final_choose.append(obj)
     return render(request , 'customer_final_choose.html', {'final_choose':final_choose})
 
